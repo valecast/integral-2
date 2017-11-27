@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,28 @@ import { HomePage } from '../pages/home/home';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
+})
+export class AppModule {}
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    DuetyApp,
+    HomePage
+  ],
+  providers: [
+    // Keep this to enable Ionic's runtime error handling during development
+    { provide: ErrorHandler, useClass: RavenErrorHandler },
+    Camera
   ]
 })
 export class AppModule {}
